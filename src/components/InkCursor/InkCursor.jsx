@@ -19,14 +19,32 @@ function Ripple({ x, y, id, onDone }) {
   )
 }
 
+function useIsTouch() {
+  const [isTouch, setIsTouch] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: coarse)')
+    setIsTouch(mq.matches)
+
+    const onChange = (e) => setIsTouch(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return isTouch
+}
+
 export default function InkCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [hover, setHover] = useState(false)
   const [ripples, setRipples] = useState([])
   const [visible, setVisible] = useState(false)
   const idRef = useRef(0)
+  const isTouch = useIsTouch()
 
   useEffect(() => {
+    if (isTouch) return
+
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY })
       if (!visible) setVisible(true)
@@ -76,7 +94,9 @@ export default function InkCursor() {
       document.removeEventListener('mouseout', onOut)
       document.removeEventListener('click', onClick)
     }
-  }, [visible])
+  }, [visible, isTouch])
+
+  if (isTouch) return null
 
   const removeRipple = useCallback((id) => {
     setRipples((prev) => prev.filter((r) => r.id !== id))

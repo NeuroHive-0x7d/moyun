@@ -24,12 +24,17 @@ body {
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
-a, button, [role="button"], input, textarea, select,
-.cursor-pointer, .cursor-zoom-in, .cursor-default, .cursor-text {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, [role="button"], input, textarea, select,
+  .cursor-pointer, .cursor-zoom-in, .cursor-default, .cursor-text {
+    cursor: none;
+  }
 }
 
 /* ── Ink Cursor ── */
