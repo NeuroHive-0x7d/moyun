@@ -34,7 +34,7 @@ export default function ProfileCard() {
 
         {/* Email */}
         {profile.email && (
-          <p className="text-sm text-ink-muted tracking-wide mb-3 truncate">
+          <p className="text-sm text-ink-muted tracking-wide mb-3 break-all">
             {profile.email}
           </p>
         )}
