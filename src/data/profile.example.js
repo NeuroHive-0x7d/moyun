@@ -1,4 +1,5 @@
 export default {
+  siteUrl: '',
   pageTitle: "墨韵",
   blogTitle: "墨韵",
   copyright: "moyun",
