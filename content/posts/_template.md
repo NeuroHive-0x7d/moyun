@@ -5,7 +5,7 @@ category: "示例"
 tags: ["示例", "模板", "Markdown"]
 excerpt: "这篇文章展示了如何编写博客文章，包括 YAML 头部字段说明和常用 Markdown 语法。"
 hidden: false
-cover: null
+cover: /images/example.jpg
 ---
 
 ## 二级标题
