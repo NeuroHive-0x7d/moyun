@@ -142,25 +142,25 @@ export default function Article() {
             </div>
           </header>
 
+          {/* Cover image */}
+          {post.cover && (
+            <div className="mb-10 flex justify-center">
+              <img
+                src={post.cover}
+                alt={post.title}
+                className="max-w-full max-h-96 object-contain rounded-lg cursor-zoom-in hover:opacity-90 transition-opacity duration-200"
+                onClick={() => setLightbox({ src: post.cover, alt: post.title })}
+                loading="lazy"
+              />
+            </div>
+          )}
+
           {/* Decorative rule */}
           <div className="flex items-center gap-3 mb-10">
             <span className="flex-1 h-px bg-rule" />
             <span className="w-1 h-1 rounded-full bg-amber/50" />
             <span className="flex-1 h-px bg-rule" />
           </div>
-
-          {/* Cover image */}
-          {post.cover && (
-            <div className="mb-10">
-              <img
-                src={post.cover}
-                alt={post.title}
-                className="w-full max-h-96 object-contain rounded-lg border border-rule/60 cursor-zoom-in hover:opacity-90 transition-opacity duration-200"
-                onClick={() => setLightbox({ src: post.cover, alt: post.title })}
-                loading="lazy"
-              />
-            </div>
-          )}
 
           {/* Article body */}
           <article className="prose max-w-none">
