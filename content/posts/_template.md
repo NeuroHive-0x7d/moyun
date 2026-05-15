@@ -4,6 +4,7 @@ date: "2026-05-10"
 category: "示例"
 tags: ["示例", "模板", "Markdown"]
 excerpt: "这篇文章展示了如何编写博客文章，包括 YAML 头部字段说明和常用 Markdown 语法。"
+order: 1
 hidden: false
 cover: /images/example.jpg
 ---
@@ -44,6 +45,7 @@ $$
 | 分类 | `category` — 单个分类名 |
 | 标签 | `tags` — 标签数组，用于筛选 |
 | 摘要 | `excerpt` — 首页卡片展示的简短描述 |
+| 排序 | `order` — 同一天内排序（越小越靠前，默认 9999） |
 | 隐藏 | `hidden: true` 可隐藏草稿 |
 | 封面 | `cover` — 可选封面图路径 |
 
