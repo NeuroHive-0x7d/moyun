@@ -30,10 +30,11 @@ export default function rssPlugin(siteUrl, siteTitle, siteDesc) {
           const raw = fs.readFileSync(full, 'utf-8')
           const { data } = parseFrontmatter(raw)
           const hidden = data.hidden === 'true' || data.hidden === true
-          return { ...data, id: rel.replace(/\\/g, '/').replace('.md', ''), hidden }
+          const order = data.order != null ? parseInt(data.order, 10) : 0
+          return { ...data, id: rel.replace(/\\/g, '/').replace('.md', ''), hidden, order }
         })
         .filter((p) => !p.hidden && p.date)
-        .sort((a, b) => b.date.localeCompare(a.date))
+        .sort((a, b) => b.date.localeCompare(a.date) || b.order - a.order || a.id.localeCompare(b.id))
 
       const items = posts
         .map(
