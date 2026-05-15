@@ -29,7 +29,8 @@ export default function rssPlugin(siteUrl, siteTitle, siteDesc) {
         .map(({ full, rel }) => {
           const raw = fs.readFileSync(full, 'utf-8')
           const { data } = parseFrontmatter(raw)
-          return { ...data, id: rel.replace(/\\/g, '/').replace('.md', '') }
+          const hidden = data.hidden === 'true' || data.hidden === true
+          return { ...data, id: rel.replace(/\\/g, '/').replace('.md', ''), hidden }
         })
         .filter((p) => !p.hidden && p.date)
         .sort((a, b) => b.date.localeCompare(a.date))
